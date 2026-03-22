@@ -24,7 +24,7 @@ public class Terminal {
 
         System.out.println("FORNECEDOR");
         System.out.println("Digite o nome do fornecedor");
-        String nomeDoFornecedor = leitor.nextLine();
+        String nomeDoFornecedor = leitor.next();
 
         System.out.println("Digite o CNPJ do fornecedor");
         String cnpj = leitor.next();
