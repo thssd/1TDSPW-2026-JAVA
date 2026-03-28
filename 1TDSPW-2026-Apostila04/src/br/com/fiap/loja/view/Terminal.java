@@ -33,6 +33,9 @@ public class Terminal {
         Produto produto = new Produto();
         Fornecedor fornecedor = new Fornecedor();
 
+        produto.fornecedor = fornecedor;
+
+
         //Colocar as informações no objeto produto
         produto.nome = nome;
         produto.preco = preco;
@@ -40,6 +43,7 @@ public class Terminal {
         produto.disponivel = disponivel;
         fornecedor.nomeDoFornecedor = nomeDoFornecedor;
         fornecedor.cnpj = cnpj;
+
 
         //Exibir as informações do objeto produto
         System.out.println("\nPRODUTO");
@@ -58,6 +62,12 @@ public class Terminal {
         double porcentagem = leitor.nextDouble();
 
         produto.aumentarPreco(porcentagem);
+
         System.out.println("Novo preço: " + produto.preco);
+        System.out.println("Quantos itens deseja comprar?");
+        int qtd = leitor.nextInt();
+
+        double valorTotal = produto.calcularValorTotal(qtd);
+        System.out.println("O valor total foi: " + valorTotal);
     }
 }
