@@ -13,10 +13,11 @@ public class Produto {
         return desconto;
     }
 
-    public double aumentarPreco(double porcentagem) {
+    public void aumentarPreco(double porcentagem) {
         preco += preco * porcentagem / 100;
+    }
 
-    public double calcularValorTotal(int qtd) {
-        return preco * qtd;
+    public double calcularValorTotal(int quantidade) {
+        return preco * quantidade;
     }
 }
