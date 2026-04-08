@@ -7,31 +7,29 @@ import java.util.Scanner;
 
 //Responsável por iteragir com o usuário
 public class Terminal {
-    public static void main (String[] args) {
+    static void main() {
         Scanner leitor = new Scanner (System.in);
-        //Ler as informaçãoes do produto e fornecedor
-
-        System.out.println("PRODUTO");
-        System.out.print("Digite o nome: ");
+        //Ler as informaçãoes do produto (sem fornecedor por enquanto)
+        System.out.println("Digite o nome do produto");
         String nome = leitor.nextLine();
 
-        System.out.print("Digite o preço: R$");
+        System.out.println("Digite o preço do produto");
         double preco = leitor.nextDouble();
 
-        System.out.print("Digite o código: ");
+        System.out.println("Digite o código do produto");
         int codigo = leitor.nextInt();
 
-        System.out.print("Está disponivel? (true/false) ");
+        System.out.println("O produto está disponivel (true/false");
         boolean disponivel = leitor.nextBoolean();
 
-        System.out.println("\nFORNECEDOR");
-        System.out.print("Digite o nome: ");
+        System.out.println("FORNECEDOR");
+        System.out.println("Digite o nome do fornecedor");
         String nomeDoFornecedor = leitor.next();
 
-        System.out.print("Digite o CNPJ: ");
+        System.out.println("Digite o CNPJ do fornecedor");
         String cnpj = leitor.next();
 
-        //Instanciar as classes produto e fornecedor
+        //Instanciar a classe produto
         Produto produto = new Produto();
         Fornecedor fornecedor = new Fornecedor();
 
@@ -41,37 +39,14 @@ public class Terminal {
         produto.codigo = codigo;
         produto.disponivel = disponivel;
 
-        //Adicionar os valores no forncedor
-        fornecedor.nomeDoFornecedor = nomeDoFornecedor;
-        fornecedor.cnpj = cnpj;
+        //Exibir as informações do objeto produto
+        System.out.println("Nome do produto: " + nome);
+        System.out.println("Preço do produto: " + preco);
+        System.out.println("Codigo do produto: " + codigo);
+        System.out.println("Produto está disponível: " + disponivel);
+        System.out.println("FORNECEDOR");
+        System.out.println("Nome: " + nomeDoFornecedor);
+        System.out.println("CNPJ " + cnpj);
 
-        //Colocar o fornecedor no produto
-        produto.fornecedor = fornecedor;
-
-        //Exibir as informações do objeto produto e fornecedor
-        System.out.println("\n************************************");
-        System.out.println("\nPRODUTO");
-        System.out.println("Nome: " + produto.nome);
-        System.out.println("Preço: R$" + produto.preco);
-        System.out.println("Codigo: " + produto.codigo);
-        System.out.println("Disponibilidade: " + produto.disponivel);
-        System.out.println("\nFORNECEDOR");
-        System.out.println("Nome: " + fornecedor.nomeDoFornecedor);
-        System.out.println("CNPJ: " + fornecedor.cnpj);
-
-        System.out.println("\n************************************");
-        double promocao = produto.calcularDesconto();
-        System.out.println("\nDesconto " + promocao);
-
-        System.out.print("Qual a porcentagem de aumento? ");
-        double porcentagem = leitor.nextDouble();
-        produto.aumentarPreco(porcentagem);
-
-        //Ler a quantidade
-        System.out.print("Quantos itens deseja comprar? ");
-        int qtd = leitor.nextInt();
-
-        double valorTotal = produto.calcularValorTotal(qtd);
-        System.out.printf("PREÇO FINAL: R$%.2f", valorTotal);
     }
 }
