@@ -49,11 +49,23 @@ public class Funcionario {
         this.sexo = sexo;
     }
 
-    double calcularPlr(){
-        return 0;
+    public String retonarSalario(){
+        return formatar(salario);
     }
 
-    void colocarEmFerias(){
+    public String retornarPlr(){
+        return formatar(calcularPlr());
+    }
 
+    public String formatar(double valor){
+        return "R$" + valor;
+    }
+
+    public double calcularPlr(){
+        return salario * 3;
+    }
+
+    public void colocarEmFerias(){
+        ativo = false;
     }
 }
