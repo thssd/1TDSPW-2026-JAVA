@@ -12,10 +12,7 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public void exibirDados(){
-        System.out.println("Nome: " + nome);
-        System.out.println("Número de matricula: " + matricula);
-        System.out.println("Profissão: " + profissao);
-        System.out.println("Salario: " + salario);
+    public String exibirDados(){
+        return "nome: " + nome + " | matricula: " + matricula + " | profissão: " + profissao.getNome() + " | salario: " + salario;
     }
 }
