@@ -18,7 +18,13 @@ public class Terminal {
         pokedex.add(pokemon2);
         pokedex.add(pokemon3);
 
-        System.out.println(pokedex);
+        System.out.println("Quantidade de Pokemon: " + pokedex.size());
+
+        for (int i = 0; i < pokedex.size(); i++) {
+            System.out.println(pokedex.get(i));
+        }
+
+
     }
 
 }
