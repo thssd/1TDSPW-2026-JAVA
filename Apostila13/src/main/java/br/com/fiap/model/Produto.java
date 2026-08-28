@@ -1,0 +1,61 @@
+package br.com.fiap.model;
+
+public class Produto {
+
+    private int codigo;
+    private String nome;
+    private String descricao;
+    private double valor;
+    private boolean emEstoque;
+
+    public Produto() {
+    }
+
+    public Produto(int codigo, String nome, String descricao, double valor, boolean emEstoque) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.emEstoque = emEstoque;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public boolean isEmEstoque() {
+        return emEstoque;
+    }
+
+    public void setEmEstoque(boolean emEstoque) {
+        this.emEstoque = emEstoque;
+    }
+}
