@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoDao {
@@ -43,12 +44,36 @@ public class ProdutoDao {
             throw new EntidadeNaoEncontradaException("entidade nao encontrada");
         }
 
-        return null;
+        int codigo = resultSet.getInt("cd_produto");
+        String nome = resultSet.getString("nm_produto");
+        String descricao = resultSet.getString("ds_produto");
+        double valor = resultSet.getDouble("vl_produto");
+        boolean emEstoque = resultSet.getBoolean("st_estoque");
 
+        return new Produto(codigo, nome, descricao, valor, emEstoque);
     }
 
-    public List<Produto> listar() {
-        return null;
+    public List<Produto> listar() throws SQLException {
+        PreparedStatement stmt  = connection.prepareStatement("select * from T_JDBC_PRODUTO");
+        ResultSet resultSet = stmt.executeQuery();
+
+        if (!resultSet.next()) {
+            throw new EntidadeNaoEncontradaException("entidade nao encontrada");
+        }
+        List<Produto> lista = new ArrayList<>();
+
+        while (resultSet.next()) {
+            int codigo = resultSet.getInt("cd_produto");
+            String nome = resultSet.getString("nm_produto");
+            String descricao = resultSet.getString("ds_produto");
+            double valor = resultSet.getDouble("vl_produto");
+            boolean emEstoque = resultSet.getBoolean("st_estoque");
+
+            Produto produto = new Produto(codigo, nome, descricao, valor, emEstoque);
+            lista.add(produto);
+        }
+
+        return lista;
     }
 
     public void atualizar(Produto produto) {

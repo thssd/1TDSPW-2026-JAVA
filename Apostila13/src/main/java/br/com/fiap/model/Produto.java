@@ -58,4 +58,15 @@ public class Produto {
     public void setEmEstoque(boolean emEstoque) {
         this.emEstoque = emEstoque;
     }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "codigo=" + codigo +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", valor=" + valor +
+                ", emEstoque=" + emEstoque +
+                '}';
+    }
 }

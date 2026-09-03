@@ -16,9 +16,6 @@ public class Exemplo {
             System.out.println("Conectado!");
 
             Statement statement = conexao.createStatement();
-            statement.executeUpdate("insert into T_JDBC_PRODUTO (cd_produto, nm_produto, ds_produto, " +
-                    "vl_produto, st_estoque) values (3, 'Camisa de time', 'Camisa São Paulo 2012 G', " +
-                    "150, 1)");
 
             conexao.close();
         } catch (ClassNotFoundException | SQLException e) {
