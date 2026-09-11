@@ -19,6 +19,13 @@ public class Produto {
         this.emEstoque = emEstoque;
     }
 
+    public Produto(String nome, String descricao, double valor, boolean emEstoque) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.emEstoque = emEstoque;
+    }
+
     public int getCodigo() {
         return codigo;
     }
@@ -57,5 +64,15 @@ public class Produto {
 
     public void setEmEstoque(boolean emEstoque) {
         this.emEstoque = emEstoque;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto " + codigo + " {" +
+                "Nome= " + nome +
+                " | Descrição= " + descricao +
+                " | Valor= " + valor + "R$" +
+                " | Em estoque= " + (emEstoque?"sim":"não") +
+                '}';
     }
 }

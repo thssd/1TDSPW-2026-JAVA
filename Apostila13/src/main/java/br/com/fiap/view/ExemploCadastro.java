@@ -10,25 +10,32 @@ public class ExemploCadastro {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite o código: ");
-        int codigo = scanner.nextInt();
+        try {
+            System.out.println("Digite o nome");
+            String nome = scanner.next() + scanner.nextLine();
 
-        System.out.println("Digite o nome: ");
-        String nome = scanner.next() + scanner.nextLine();
+            System.out.println("Digite a descrição");
+            String descricao = scanner.next() + scanner.nextLine();
 
-        System.out.println("Digite a descrição: ");
-        String descricao = scanner.next() + scanner.nextLine();
+            System.out.println("Digite o valor");
+            double valor = scanner.nextDouble();
 
-        System.out.println("Digite o valor: ");
-        double valor = scanner.nextDouble();
+            System.out.println("Digite se tem estoque (true/false)");
+            boolean estoque = scanner.nextBoolean();
 
-        System.out.println("Em estoque? (true/false)");
-        boolean emEstoque = scanner.nextBoolean();
+            //Instanciar um Produto com os dados
+            Produto produto = new Produto(nome, descricao, valor, estoque);
 
-        Produto produto = new Produto(codigo, nome, descricao, valor, emEstoque);
+            //Instanciar um ProdutoDao
+            ProdutoDao dao = new ProdutoDao();
 
-        ProdutoDao produtoDao = new ProdutoDao();
+            //Chamar o método de cadastro
+            dao.cadastrar(produto);
+            System.out.println("Produto cadastrado!");
+            System.out.println(produto);
 
-        produtoDao.cadastrar(produto);
+        } catch(Exception e){
+            System.err.println("Erro: " + e.getMessage());
+        }
     }
 }
