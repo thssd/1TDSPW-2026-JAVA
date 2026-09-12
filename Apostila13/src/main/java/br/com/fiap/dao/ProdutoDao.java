@@ -56,6 +56,20 @@ public class ProdutoDao {
         return getProduto(resultSet);
     }
 
+    public List<Produto> buscarPorPreco(double preco) throws SQLException, EntidadeNaoEncontradaException {
+        //Criar o Comando SQL
+        PreparedStatement stmt = connection.prepareStatement(
+                "select * from t_jdbc_produto where vl_produto > ?");
+        //Setar o valor no comando SQL
+        stmt.setDouble(1, preco);
+        //Executar o comando SQL
+        ResultSet resultSet = stmt.executeQuery(); //Executa comandos de pesquisa
+
+        List<Produto> lista = new ArrayList<>();
+        while (resultSet.next()) lista.add(getProduto(resultSet));
+        return lista;
+    }
+
     public List<Produto> listar() throws SQLException {
         //Criar o comando SQL
         PreparedStatement stmt = connection

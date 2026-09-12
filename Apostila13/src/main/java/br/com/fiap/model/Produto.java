@@ -71,7 +71,7 @@ public class Produto {
         return "Produto " + codigo + " {" +
                 "Nome= " + nome +
                 " | Descrição= " + descricao +
-                " | Valor= " + valor + "R$" +
+                " | Valor= R$" + valor +
                 " | Em estoque= " + (emEstoque?"sim":"não") +
                 '}';
     }
