@@ -18,7 +18,7 @@ public class CategoriaDao {
 
     public void cadastrar(Categoria categoria) throws SQLException {
         PreparedStatement stmt = connection.prepareStatement("insert into t_jdbc_categoria " +
-                "(cd_categoria, nm_categoria) values (sq_jdbc_categoria, ?)", new String[] {"cd_categoria"});
+                "(cd_categoria, nm_categoria) values (sq_jdbc_categoria.nextVal, ?)", new String[] {"cd_categoria"});
         stmt.setString(1, categoria.getNome());
         stmt.executeUpdate();
         ResultSet resultSet = stmt.getGeneratedKeys();
