@@ -7,6 +7,12 @@ public class Imovel {
     private double metros;
     private double valor;
 
+    public Imovel(String descricao, double metros, double valor) {
+        this.descricao = descricao;
+        this.metros = metros;
+        this.valor = valor;
+    }
+
     public Imovel(int codigo, String descricao, double metros, double valor) {
         this.codigo = codigo;
         this.descricao = descricao;

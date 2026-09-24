@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class ImovelDao {
@@ -30,5 +31,9 @@ public class ImovelDao {
             if (resultSet.next())
                 imovel.setCodigo(resultSet.getInt(1));
         }
+    }
+
+    public List<Imovel> listar() {
+        return null;
     }
 }
