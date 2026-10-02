@@ -24,16 +24,16 @@ public class ImovelDao {
         this.dataSource = dataSource;
     }
 
-    public void atualizar(Imovel imovel) throws SQLException, EntidadeNaoEncontradaException {
+    public void cadastrar(Imovel imovel) throws SQLException {
         try (Connection conexao = dataSource.getConnection();
-             PreparedStatement stmt = conexao.prepareStatement(UPDATE_SQL)){
+             PreparedStatement stmt = conexao.prepareStatement(INSERT_SQL, new String[]{"cd_imovel"})){
             stmt.setString(1, imovel.getDescricao());
             stmt.setDouble(2, imovel.getMetros());
             stmt.setDouble(3, imovel.getValor());
-            stmt.setInt(4, imovel.getCodigo());
-            int linhas = stmt.executeUpdate();
-            if (linhas == 0)
-                throw new EntidadeNaoEncontradaException("Imovel não encontrado para atualizar");
+            stmt.executeUpdate();
+            ResultSet resultSet = stmt.getGeneratedKeys();
+            if (resultSet.next())
+                imovel.setCodigo(resultSet.getInt(1));
         }
     }
 
@@ -59,25 +59,25 @@ public class ImovelDao {
         }
     }
 
+    public void atualizar(Imovel imovel) throws SQLException, EntidadeNaoEncontradaException {
+        try (Connection conexao = dataSource.getConnection();
+             PreparedStatement stmt = conexao.prepareStatement(UPDATE_SQL)){
+            stmt.setString(1, imovel.getDescricao());
+            stmt.setDouble(2, imovel.getMetros());
+            stmt.setDouble(3, imovel.getValor());
+            stmt.setInt(4, imovel.getCodigo());
+            int linhas = stmt.executeUpdate();
+            if (linhas == 0)
+                throw new EntidadeNaoEncontradaException("Imovel não encontrado para atualizar");
+        }
+    }
+
     private Imovel getImovel(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("cd_imovel");
         String descricao = resultSet.getString("ds_imovel");
         double dimensao = resultSet.getDouble("nr_dimensao");
         double valor = resultSet.getDouble("vl_imovel");
         return new Imovel(id, descricao, dimensao, valor);
-    }
-
-    public void cadastrar(Imovel imovel) throws SQLException {
-        try (Connection conexao = dataSource.getConnection();
-             PreparedStatement stmt = conexao.prepareStatement(INSERT_SQL, new String[]{"cd_imovel"})){
-            stmt.setString(1, imovel.getDescricao());
-            stmt.setDouble(2, imovel.getMetros());
-            stmt.setDouble(3, imovel.getValor());
-            stmt.executeUpdate();
-            ResultSet resultSet = stmt.getGeneratedKeys();
-            if (resultSet.next())
-                imovel.setCodigo(resultSet.getInt(1));
-        }
     }
 
 }
