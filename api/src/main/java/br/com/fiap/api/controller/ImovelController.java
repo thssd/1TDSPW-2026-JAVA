@@ -5,7 +5,6 @@ import br.com.fiap.api.exception.EntidadeNaoEncontradaException;
 import br.com.fiap.api.model.Imovel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -22,24 +21,6 @@ public class ImovelController {
         this.dao = dao;
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> atualizar(@PathVariable int id, @RequestBody Imovel imovel) throws EntidadeNaoEncontradaException, SQLException {
-        imovel.setCodigo(id);
-        dao.atualizar(imovel);
-        return ResponseEntity.ok().build(); //Retorna o Status 200 OK
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Imovel> buscar(@PathVariable int id) throws EntidadeNaoEncontradaException, SQLException {
-        Imovel imovel = dao.pesquisarPorId(id);
-        return ResponseEntity.ok(imovel); //Retorna o imovel com o status HTTP 200 OK
-    }
-
-    @GetMapping
-    public List<Imovel> listar() throws SQLException {
-        return dao.listar();
-    }
-
     @PostMapping
     public ResponseEntity<Imovel> cadastrar(@RequestBody Imovel imovel,
                                             UriComponentsBuilder builder) throws SQLException {
@@ -51,4 +32,30 @@ public class ImovelController {
         return ResponseEntity.created(uri).body(imovel);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Imovel> buscar(@PathVariable int id) throws EntidadeNaoEncontradaException, SQLException {
+        Imovel imovel = dao.pesquisarPorId(id);
+
+        return ResponseEntity.ok(imovel);
+    }
+
+    @GetMapping
+    public List<Imovel> listar() throws SQLException {
+        return dao.listar();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> atualizar(@PathVariable int id, @RequestBody Imovel imovel) throws EntidadeNaoEncontradaException, SQLException {
+        imovel.setCodigo(id);
+        dao.atualizar(imovel);
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable int id) throws SQLException {
+        dao.deletar(id);
+
+        return ResponseEntity.noContent().build();
+    }
 }

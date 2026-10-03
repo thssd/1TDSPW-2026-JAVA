@@ -4,8 +4,15 @@ public class Imovel {
 
     private int codigo;
     private String descricao;
-    private double metros;
-    private double valor;
+    private Double metros;
+    private Double valor;
+    private TipoImovel tipoImovel;
+
+    public Imovel(String descricao, double metros, double valor) {
+        this.descricao = descricao;
+        this.metros = metros;
+        this.valor = valor;
+    }
 
     public Imovel(int codigo, String descricao, double metros, double valor) {
         this.codigo = codigo;
