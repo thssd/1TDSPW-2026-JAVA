@@ -1,0 +1,134 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: IMOVEL
+meta:
+  id: wrk_d709096fd2ec4e2c8f9528c2f900db29
+  created: 1790984118960
+  modified: 1790991051574
+  description: ""
+collection:
+  - url: http://localhost:8080/imoveis
+    name: CADASTRAR
+    meta:
+      id: req_00bb5dfc97a34be49e4aed2ac5166ff0
+      created: 1790984122981
+      modified: 1790987371775
+      isPrivate: false
+      description: ""
+      sortKey: -1790984534023
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"descricao": "Sofá Cinza",
+        	"metros": "2",
+        	"valor": "2000"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/imoveis
+    name: LISTAR
+    meta:
+      id: req_19595a77c3874027b585bd34a1ee70bc
+      created: 1790984472710
+      modified: 1790991039021
+      isPrivate: false
+      description: ""
+      sortKey: -1790984472710
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/imoveis/9
+    name: BUSCAR
+    meta:
+      id: req_ff2028b4ca5b48bcb6b55b370ca802fc
+      created: 1790984490225
+      modified: 1790988729627
+      isPrivate: false
+      description: ""
+      sortKey: -1790984490225
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/imoveis/2
+    name: DELETAR
+    meta:
+      id: req_42602ee935e14ad0bf51d1f3bd8efb70
+      created: 1790987476825
+      modified: 1790988732812
+      isPrivate: false
+      description: ""
+      sortKey: -1790984472510
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/imoveis/1
+    name: ATUALIZAR
+    meta:
+      id: req_24be415d078d4f08bd06268cb0f64300
+      created: 1790988717753
+      modified: 1790988833561
+      isPrivate: false
+      description: ""
+      sortKey: -1790984472610
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"descricao": "Apartamento duas suítes",
+        	"metros": "60",
+        	"valor": "70000"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_607cf5387fbec5ff5469028c40456061a6f9e315
+    created: 1790984118976
+    modified: 1790984118976
+environments:
+  name: Base Environment
+  meta:
+    id: env_607cf5387fbec5ff5469028c40456061a6f9e315
+    created: 1790984118975
+    modified: 1790984118975
+    isPrivate: false
