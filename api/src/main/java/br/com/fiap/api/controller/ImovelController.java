@@ -35,7 +35,8 @@ public class ImovelController {
     @GetMapping("/{id}")
     public ResponseEntity<Imovel> buscar(@PathVariable int id) throws EntidadeNaoEncontradaException, SQLException {
         Imovel imovel = dao.pesquisarPorId(id);
-        return ResponseEntity.ok(imovel); //Retorna o imovel com o status HTTP 200 OK
+
+        return ResponseEntity.ok(imovel);
     }
 
     @GetMapping
@@ -47,6 +48,14 @@ public class ImovelController {
     public ResponseEntity<Void> atualizar(@PathVariable int id, @RequestBody Imovel imovel) throws EntidadeNaoEncontradaException, SQLException {
         imovel.setCodigo(id);
         dao.atualizar(imovel);
-        return ResponseEntity.ok().build(); //Retorna o Status 200 OK
+
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable int id) throws SQLException {
+        dao.deletar(id);
+
+        return ResponseEntity.noContent().build();
     }
 }
