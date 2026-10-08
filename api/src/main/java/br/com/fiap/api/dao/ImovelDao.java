@@ -16,7 +16,7 @@ import java.util.List;
 public class ImovelDao {
 
     private final DataSource dataSource;
-    private static final String INSERT_SQL = "insert into t_api_imovel (cd_imovel, ds_imovel, nr_dimensao, vl_imovel) values (sq_t_api_imovel.nextval,?,?,?)";
+    private static final String INSERT_SQL = "insert into t_api_imovel (cd_imovel, ds_imovel, nr_dimensao, vl_imovel, cd_tipo) values (sq_t_api_imovel.nextval, ?, ?, ?, ?)";
     private static final String SELECT_SQL = "select * from t_api_imovel";
     private static final String SELECT_BY_ID_SQL = "select * from t_api_imovel where cd_imovel = ?";
     private static final String UPDATE_SQL = "update t_api_imovel set ds_imovel = ?, nr_dimensao = ?, vl_imovel = ? where cd_imovel = ?";
@@ -32,6 +32,7 @@ public class ImovelDao {
             stmt.setString(1, imovel.getDescricao());
             stmt.setDouble(2, imovel.getMetros());
             stmt.setDouble(3, imovel.getValor());
+            stmt.setInt(4, imovel.getTipoImovel().getCodigo());
             stmt.executeUpdate();
 
             ResultSet resultSet = stmt.getGeneratedKeys();

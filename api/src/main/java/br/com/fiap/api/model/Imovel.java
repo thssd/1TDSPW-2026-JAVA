@@ -55,4 +55,13 @@ public class Imovel {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    public TipoImovel getTipoImovel() {
+        return tipoImovel;
+    }
+
+    public void setTipoImovel(TipoImovel tipoImovel) {
+        this.tipoImovel = tipoImovel;
+    }
+
 }

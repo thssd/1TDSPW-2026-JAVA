@@ -1,19 +1,20 @@
 package br.com.fiap.api.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 public class TipoImovel {
 
     private int codigo;
     private String nome;
-    private java.sql.Date dataCadastro;
+    private LocalDateTime dataCadastro;
 
-    public TipoImovel(String nome, java.sql.Date dataCadastro) {
+    public TipoImovel(String nome, LocalDateTime dataCadastro) {
         this.nome = nome;
         this.dataCadastro = dataCadastro;
     }
 
-    public TipoImovel(int codigo, String nome, java.sql.Date dataCadastro) {
+    public TipoImovel(int codigo, String nome, LocalDateTime dataCadastro) {
         this.codigo = codigo;
         this.nome = nome;
         this.dataCadastro = dataCadastro;
@@ -38,11 +39,11 @@ public class TipoImovel {
         this.nome = nome;
     }
 
-    public Date getDataCadastro() {
+    public LocalDateTime getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
+    public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 }

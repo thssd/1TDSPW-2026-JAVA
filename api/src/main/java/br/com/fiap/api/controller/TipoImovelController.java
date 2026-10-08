@@ -30,4 +30,6 @@ public class TipoImovelController {
 
         return ResponseEntity.created(uri).body(tipoImovel);
     }
+
+
 }
