@@ -21,6 +21,7 @@ public class ImovelDao {
     private static final String SELECT_BY_ID_SQL = "select * from t_api_imovel where cd_imovel = ?";
     private static final String UPDATE_SQL = "update t_api_imovel set ds_imovel = ?, nr_dimensao = ?, vl_imovel = ? where cd_imovel = ?";
     private static final String DELTE_SQL = "delete from t_api_imovel where cd_imovel = ?";
+    private static final String SELECT_BY_TIPO_IMOVEL_SQL = "select * from t_api_imovel where cd_tipo = ?";
 
     public ImovelDao(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -61,6 +62,18 @@ public class ImovelDao {
             while (resultSet.next())
                 lista.add(getImovel(resultSet));
 
+            return lista;
+        }
+    }
+
+    public List<Imovel> buscarPorTipo(int idTipoImovel) throws SQLException {
+        try (Connection conexao = dataSource.getConnection();
+             PreparedStatement stmt = conexao.prepareStatement(SELECT_BY_TIPO_IMOVEL_SQL)){
+            stmt.setInt(1, idTipoImovel);
+            ResultSet resultSet = stmt.executeQuery();
+            List<Imovel> lista = new ArrayList<>();
+            while (resultSet.next())
+                lista.add(getImovel(resultSet));
             return lista;
         }
     }
