@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("imoveis")
+@RequestMapping("/imoveis")
 public class ImovelController {
 
     private ImovelDao dao;
@@ -29,9 +29,9 @@ public class ImovelController {
     }
 
     @PostMapping
-    public ResponseEntity<ImovelResponseDto> cadastrar(@RequestBody ImovelRequestDto imovelRequestDto,
+    public ResponseEntity<ImovelResponseDto> cadastrar(@RequestBody ImovelRequestDto dto,
                                                        UriComponentsBuilder builder) throws SQLException {
-        Imovel imovel = modelMapper.map(imovelRequestDto, Imovel.class);
+        Imovel imovel = modelMapper.map(dto, Imovel.class);
         dao.cadastrar(imovel);
 
         URI uri = builder.path("/imoveis/{id}")

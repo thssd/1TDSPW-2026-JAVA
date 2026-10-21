@@ -33,7 +33,7 @@ public class ImovelDao {
             stmt.setString(1, imovel.getDescricao());
             stmt.setDouble(2, imovel.getMetros());
             stmt.setDouble(3, imovel.getValor());
-            stmt.setInt(4, imovel.getTipoImovel().getCodigo());
+            stmt.setInt(4, imovel.getTipo().getCodigo());
             stmt.executeUpdate();
 
             ResultSet resultSet = stmt.getGeneratedKeys();
@@ -47,7 +47,7 @@ public class ImovelDao {
             stmt.setInt(1, id);
             ResultSet resultSet = stmt.executeQuery();
 
-            if (!resultSet.next()) throw new EntidadeNaoEncontradaException("Imóvel não encontrado");
+            if (!resultSet.next()) throw new EntidadeNaoEncontradaException("Imóvel não encontrado.");
 
             return getImovel(resultSet);
         }
@@ -59,8 +59,7 @@ public class ImovelDao {
             ResultSet resultSet = stmt.executeQuery();
 
             List<Imovel> lista = new ArrayList<>();
-            while (resultSet.next())
-                lista.add(getImovel(resultSet));
+            while (resultSet.next()) lista.add(getImovel(resultSet));
 
             return lista;
         }
@@ -68,12 +67,14 @@ public class ImovelDao {
 
     public List<Imovel> buscarPorTipo(int idTipoImovel) throws SQLException {
         try (Connection conexao = dataSource.getConnection();
-             PreparedStatement stmt = conexao.prepareStatement(SELECT_BY_TIPO_IMOVEL_SQL)){
+             PreparedStatement stmt = conexao.prepareStatement(SELECT_BY_TIPO_IMOVEL_SQL)) {
+
             stmt.setInt(1, idTipoImovel);
             ResultSet resultSet = stmt.executeQuery();
+
             List<Imovel> lista = new ArrayList<>();
-            while (resultSet.next())
-                lista.add(getImovel(resultSet));
+            while (resultSet.next()) lista.add(getImovel(resultSet));
+
             return lista;
         }
     }

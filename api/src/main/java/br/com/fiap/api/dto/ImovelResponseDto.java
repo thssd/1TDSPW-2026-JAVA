@@ -6,7 +6,7 @@ public class ImovelResponseDto {
     private String descricao;
     private double metros;
     private double valor;
-    private TipoImovelResponseDto tipoImovelResponseDto;
+    private TipoImovelResponseDto tipo;
 
     public int getCodigo() {
         return codigo;
@@ -40,11 +40,11 @@ public class ImovelResponseDto {
         this.valor = valor;
     }
 
-    public TipoImovelResponseDto getTipoImovelResponseDto() {
-        return tipoImovelResponseDto;
+    public TipoImovelResponseDto getTipo() {
+        return tipo;
     }
 
-    public void setTipoImovelResponseDto(TipoImovelResponseDto tipoImovelResponseDto) {
-        this.tipoImovelResponseDto = tipoImovelResponseDto;
+    public void setTipo(TipoImovelResponseDto tipo) {
+        this.tipo = tipo;
     }
 }

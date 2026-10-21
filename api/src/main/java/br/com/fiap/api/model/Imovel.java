@@ -4,9 +4,9 @@ public class Imovel {
 
     private int codigo;
     private String descricao;
-    private Double metros;
-    private Double valor;
-    private TipoImovel tipoImovel;
+    private double metros;
+    private double valor;
+    private TipoImovel tipo;
 
     public Imovel(String descricao, double metros, double valor) {
         this.descricao = descricao;
@@ -56,12 +56,12 @@ public class Imovel {
         this.valor = valor;
     }
 
-    public TipoImovel getTipoImovel() {
-        return tipoImovel;
+    public TipoImovel getTipo() {
+        return tipo;
     }
 
-    public void setTipoImovel(TipoImovel tipoImovel) {
-        this.tipoImovel = tipoImovel;
+    public void setTipo(TipoImovel tipo) {
+        this.tipo = tipo;
     }
 
 }

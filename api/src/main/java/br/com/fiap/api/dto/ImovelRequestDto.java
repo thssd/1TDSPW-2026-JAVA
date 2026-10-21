@@ -5,7 +5,7 @@ public class ImovelRequestDto {
     private String descricao;
     private double metros;
     private double valor;
-    private TipoImovelRequestDto tipoImovelRequestDto;
+    private TipoImovelRequestDto tipo;
 
     public String getDescricao() {
         return descricao;
@@ -31,11 +31,11 @@ public class ImovelRequestDto {
         this.valor = valor;
     }
 
-    public TipoImovelRequestDto getTipoImovelRequestDto() {
-        return tipoImovelRequestDto;
+    public TipoImovelRequestDto getTipo() {
+        return tipo;
     }
 
-    public void setTipoImovelRequestDto(TipoImovelRequestDto tipoImovelRequestDto) {
-        this.tipoImovelRequestDto = tipoImovelRequestDto;
+    public void setTipo(TipoImovelRequestDto tipo) {
+        this.tipo = tipo;
     }
 }

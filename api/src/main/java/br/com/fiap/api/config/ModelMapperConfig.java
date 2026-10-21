@@ -1,5 +1,6 @@
 package br.com.fiap.api.config;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,7 +8,8 @@ import org.springframework.context.annotation.Configuration;
 public class ModelMapperConfig {
 
     @Bean
-    public org.modelmapper.ModelMapper getMapper() {
-        return new org.modelmapper.ModelMapper();
+    public ModelMapper getMapper() {
+        return new ModelMapper();
     }
+
 }
